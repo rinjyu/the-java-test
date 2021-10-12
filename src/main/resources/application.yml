@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: chaos-monkey
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/study
+    username: study
+    password: study
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+    web:
+      exposuere:
+        include: health,info,chaosmonkey
+
+chaos:
+  monkey:
+    watcher:
+      repository: true
+#    enable: true
